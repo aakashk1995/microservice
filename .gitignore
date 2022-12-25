@@ -1,0 +1,13 @@
+# Default ignored files
+.idea/
+logs/
+.classpath
+.project
+.settings/
+target/
+
+user-service/user-service/target/*
+*.class
+
+user-service/**/*.class
+

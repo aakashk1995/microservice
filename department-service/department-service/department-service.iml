@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_16">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -32,7 +32,9 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.33" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.6.3" level="project" />
@@ -56,6 +58,7 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.56" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.15" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.28" level="project" />
     <orderEntry type="library" name="Maven: com.github.javafaker:javafaker:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
@@ -133,12 +136,16 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.6.1" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-core:11.7" level="project" />
     <orderEntry type="library" name="Maven: io.github.openfeign:feign-slf4j:11.7" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.6.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.15" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.15" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.15" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-resource-server:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-core:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-oauth2-jose:5.6.1" level="project" />
+    <orderEntry type="library" name="Maven: com.nimbusds:nimbus-jose-jwt:9.14" level="project" />
+    <orderEntry type="library" name="Maven: com.github.stephenc.jcip:jcip-annotations:1.0-1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-netflix-eureka-client:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.netflix.eureka:eureka-client:1.10.17" level="project" />
