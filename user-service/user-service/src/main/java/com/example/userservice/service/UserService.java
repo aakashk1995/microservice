@@ -7,8 +7,10 @@ import com.example.userservice.entity.User;
 import com.example.userservice.exception.UserNotFoundException;
 import com.example.userservice.feign.DepartmentFeign;
 import com.example.userservice.repository.UserRepository;
+import com.example.userservice.utils.GetToken;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,9 +40,15 @@ public class UserService {
         User user = userRepository.findByUserId(userid);
         Department department = null;
         if(user!=null) {
-            department = restTemplate.getForObject("http://API-GATEWAY/department/" + user.getDepartmentId(), Department.class);
+            String token =   GetToken.getTokenFromRequestHeaders();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("Authorization", token);
+
+            HttpEntity<Object> entity = new HttpEntity<Object>(headers);
+            ResponseEntity<Department> responseEntity = restTemplate.exchange("http://DEPARTMENT-SERVICE/department/"+user.getDepartmentId() , HttpMethod.GET, entity , Department.class);
             responseTemplateVO.setUser(user);
-            responseTemplateVO.setDepartment(department);
+            responseTemplateVO.setDepartment(responseEntity.getBody());
         }else
             throw new UserNotFoundException("User with id " + userid + "Not found");
         return responseTemplateVO;

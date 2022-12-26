@@ -3,13 +3,18 @@ package com.example.userservice.controller;
 import com.example.userservice.dto.ResponseTemplateVO;
 import com.example.userservice.dto.UserDepartmentDTO;
 import com.example.userservice.entity.User;
-import com.example.userservice.exception.UserNotFoundException;
+
 import com.example.userservice.service.UserService;
+import com.example.userservice.utils.GetCurrentHttpRequest;
+import com.example.userservice.utils.GetToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -36,6 +41,8 @@ public class UserController {
     @GetMapping("/users/{id}")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userid)  {
         LOGGER.info("Fetching details of user " + userid) ;
+
+
 
          return userService.getUserWithDepartment(userid);
 

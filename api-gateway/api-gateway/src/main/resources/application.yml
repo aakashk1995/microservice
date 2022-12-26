@@ -7,6 +7,9 @@ spring:
   main:
     web-application-type: reactive
     allow-bean-definition-overriding: true
+  devtools:
+    restart:
+      enabled: true
   security:
     oauth2:
       resourceserver:

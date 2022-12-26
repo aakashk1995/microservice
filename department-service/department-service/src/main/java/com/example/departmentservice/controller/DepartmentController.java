@@ -7,8 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.WebSession;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +55,12 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department findByDepartmentId(@PathVariable("id") Long id){
+    public Department findByDepartmentId(@PathVariable("id") Long id, HttpSession session){
         LOGGER.info("fetching department with id " + id);
+        System.out.println(session.toString());
+      //  SecurityContext securityContext = session.getAttribute("SPRING_SECURITY_CONTEXT");
+       // Authentication authentication = securityContext.getAuthentication();
+
         return departmentService.findDepartmentById(id);
     }
 
