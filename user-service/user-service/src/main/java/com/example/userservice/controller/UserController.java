@@ -10,9 +10,11 @@ import com.example.userservice.utils.GetToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -33,18 +35,18 @@ public class UserController {
 
 
     @GetMapping("/users")
+    @RolesAllowed({"user_read"})
     public List<UserDepartmentDTO> getAllUserDetailsWithUserAndDepartment(){
         LOGGER.info("Fetching All users data");
         return userService.getAllUserDetailsWithUserAndDepartment();
     }
 
     @GetMapping("/users/{id}")
+    @RolesAllowed({"user_read"})
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userid)  {
         LOGGER.info("Fetching details of user " + userid) ;
-
-
-
-         return userService.getUserWithDepartment(userid);
+        return userService.getUserWithDepartment(userid);
 
     }
 

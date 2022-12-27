@@ -55,12 +55,8 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department findByDepartmentId(@PathVariable("id") Long id, HttpSession session){
+    public Department findByDepartmentId(@PathVariable("id") Long id){
         LOGGER.info("fetching department with id " + id);
-        System.out.println(session.toString());
-      //  SecurityContext securityContext = session.getAttribute("SPRING_SECURITY_CONTEXT");
-       // Authentication authentication = securityContext.getAuthentication();
-
         return departmentService.findDepartmentById(id);
     }
 

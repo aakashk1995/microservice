@@ -18,16 +18,18 @@ public class FilterConfig {
     @Order(-1)
     public GlobalFilter requestFilter(){
         return (exchange, chain) -> {
-            ServerHttpRequest request = exchange.getRequest();
-            Mono<WebSession> sessionMono = exchange.getSession();
-            HttpHeaders httpHeaders =  request.getHeaders();
-           List<String> headersValueList =  httpHeaders.get("Authorization");
-            System.out.println(headersValueList);
+            //PRE FILTER LOGIC
+//            ServerHttpRequest request = exchange.getRequest();
+//            Mono<WebSession> sessionMono = exchange.getSession();
+//            HttpHeaders httpHeaders =  request.getHeaders();
+//           List<String> headersValueList =  httpHeaders.get("Authorization");
+//            System.out.println(headersValueList);
             return chain.filter(exchange)
                     .then(Mono.fromRunnable(() -> {
-                        var response = exchange.getResponse();
-                        response.setRawStatusCode(201);
-                        exchange.mutate().response(response).build();
+                        // POST FILTER RESPONSE LOGIC
+//                        var response = exchange.getResponse();
+//                        response.setRawStatusCode(201);
+//                        exchange.mutate().response(response).build();
                     }));
         };
     }

@@ -33,6 +33,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8090/auth/realms/microservice
+          jwk-set-uri: http://localhost:8090/auth/realms/microservice/protocol/openid-connect/certs
 
 eureka:
   client:
