@@ -28,13 +28,21 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://cms-dev:8080/auth/realms/aakashk-realm
+          jwk-set-uri: http://cms-dev:8080/auth/realms/aakashk-realm/protocol/openid-connect/certs
+          client-id: user-service
+          client-secret: e345a1a1-0331-4145-8e6c-2ec3fae88007
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://brilp0146.sst.stp:8761/eureka/
   instance:
     hostname: localhost
 

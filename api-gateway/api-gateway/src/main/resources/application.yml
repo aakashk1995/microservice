@@ -1,11 +1,11 @@
 server:
-  port: 9191
+  port: 9090
 
 spring:
   application:
     name: api-gateway
   main:
-    web-application-type: reactive
+    #web-application-type: reactive
     allow-bean-definition-overriding: true
   devtools:
     restart:
@@ -14,33 +14,37 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8090/auth/realms/microservice
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8090/auth/realms/microservice
-        registration:
-          keycloak-spring-gateway-client:
-            provider: keycloak
-            client-id: api-gateway-client
-            client-secret: e3312665-bf66-4931-bddf-81dc9a96bbd2
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
-            scope: openid
+          issuer-uri: http://cms-dev:8080/auth/realms/aakashk-realm
+          jwk-set-uri: http://cms-dev:8080/auth/realms/aakashk-realm/protocol/openid-connect/certs
+          client-id: spring-gateway-client
+          client-secret: 37654452-5868-42db-abf7-e1c4f023ca24
 
-  cloud:
-    gateway:
-      default-filters:
-        - TokenRelay
-      routes:
-        - id: userModules
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/users/**
-        - id: deparmentModules
-          uri: lb://DEPARTMENT-SERVICE
-          predicates:
-            - Path=/department/**
+#      client:
+#        provider:
+#          keycloak:
+#            issuer-uri: http://cms-dev:8080/auth/realms/aakashk-realm
+#        registration:
+#          keycloak-spring-gateway-client:
+#            provider: keycloak
+#            client-id: spring-gateway-client
+#            client-secret: 37654452-5868-42db-abf7-e1c4f023ca24
+#            authorization-grant-type: authorization_code
+#            redirect-uri: "http://brilp0146.sst.stp:9090/"
+#            scope: openid
+
+#  cloud:
+#    gateway:
+#      default-filters:
+#        - TokenRelay
+#      routes:
+#        - id: userModules
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/users/**
+#        - id: deparmentModules
+#          uri: lb://DEPARTMENT-SERVICE
+#          predicates:
+#            - Path=/department/**
 
 
 

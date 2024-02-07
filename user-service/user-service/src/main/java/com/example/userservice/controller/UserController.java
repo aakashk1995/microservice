@@ -28,6 +28,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public User saveUser(@RequestBody User user){
         LOGGER.info("Saving user data ", user);
         return userService.saveUser(user);
@@ -35,14 +36,14 @@ public class UserController {
 
 
     @GetMapping("/users")
-    @RolesAllowed({"user_read"})
+    //@RolesAllowed({"user_read"})
     public List<UserDepartmentDTO> getAllUserDetailsWithUserAndDepartment(){
         LOGGER.info("Fetching All users data");
         return userService.getAllUserDetailsWithUserAndDepartment();
     }
 
     @GetMapping("/users/{id}")
-    @RolesAllowed({"user_read"})
+   // @RolesAllowed({"user_read"})
 //    @PreAuthorize("hasRole('ADMIN')")
     public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userid)  {
         LOGGER.info("Fetching details of user " + userid) ;

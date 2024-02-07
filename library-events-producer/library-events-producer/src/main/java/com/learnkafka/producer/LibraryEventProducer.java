@@ -7,9 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.header.Header;
 import org.apache.kafka.common.header.internals.RecordHeader;
+import org.apache.kafka.common.protocol.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.FailureCallback;
 import org.springframework.util.concurrent.ListenableFuture;
@@ -37,7 +39,9 @@ public class LibraryEventProducer {
         String value = objectMapper.writeValueAsString(libraryEvent);
         SendResult<Integer,String> sendResult = null;
         try {
+
             sendResult=    kafkaTemplate.send(KAFKA_TOPIC,key,value).get();
+
             System.out.println(sendResult.getProducerRecord().toString());
             log.info("Send data successfully to kafka Data - Key : {} Value : {}",key,value );
         } catch (Exception e) {
