@@ -28,7 +28,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAnyAuthority('USER')")
     public User saveUser(@RequestBody User user){
         LOGGER.info("Saving user data ", user);
         return userService.saveUser(user);

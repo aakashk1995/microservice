@@ -32,19 +32,19 @@ spring:
 #            redirect-uri: "http://brilp0146.sst.stp:9090/"
 #            scope: openid
 
-#  cloud:
-#    gateway:
-#      default-filters:
-#        - TokenRelay
-#      routes:
-#        - id: userModules
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/users/**
-#        - id: deparmentModules
-#          uri: lb://DEPARTMENT-SERVICE
-#          predicates:
-#            - Path=/department/**
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: userModules
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+        - id: deparmentModules
+          uri: lb://DEPARTMENT-SERVICE
+          predicates:
+            - Path=/department/**
 
 
 
